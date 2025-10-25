@@ -57,5 +57,41 @@
   </main>
   
   <!-- Add book dialog -->
+  <dialog id="dlgAdd" class="modal">
+    <form id="formAdd" method="dialog" class="modal__content">
+      <div class="modal__title">
+        <h2>Add a book</h2>
+        <button type="button" class="btn btn--pill" id="closeAdd">Close</button>
+      </div>
+
+      <label>Title:
+        <input name="title" required/>
+      </label>
+
+      <label>Author:
+        <input name="author" required/>
+      </label>
+
+      <label>Pages:
+        <input name="pages" required/>
+      </label>
+
+      <label class="chk">
+        <input name="read" type="checkbox"/>
+        Read 
+      </label>
+
+      <div class="actions">
+        <button class="btn" type="submit">
+          <span class="md mdi-check-bold"></span>
+        Add 
+        </button>
+      </div>
+
+      <div class="idbox">ID: <span id="addHumanId">-</span></div>
+    </form>
+  </dialog>
+
+  <!-- Edit book dialog -->
 </body>
 </html>
