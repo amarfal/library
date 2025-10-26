@@ -1,0 +1,38 @@
+:root {
+  --bg-img: url("images/background.png");
+  --ink: #111;
+  --muted: #666;
+  --panel: #fff7f2;
+  --row-alt: #c4b1d9;
+  --accent: #7f5cc9;
+  --ghost: #eee;
+  --stroke: #222;
+  --shadow: rgba(0,0,0,.25);
+}
+
+/* Page backdrop */
+html,body { height: 100%; }
+body {
+  margin: 0;
+  font: 11.5px "Roboto", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at bottom, rgba(128,0,0,.8), transparent 60%),
+    radial-gradient(ellipse at top, rgba(60,60,220,.6), transparent 60%),
+    var(--bg-img) center/cover no-repeat fixed;
+}
+
+/* Header */
+.app-title {
+  text-align: center;
+  padding: .75rem 1rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  background: #ffe9dd;
+  border-bottom: 3px solid #000;
+}
+
+/* Main layout */
+.wrap {
+  
+}
