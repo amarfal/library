@@ -93,5 +93,43 @@
   </dialog>
 
   <!-- Edit book dialog -->
+  <dialog id="dlgEdit" class="modal">
+    <form id="formEdit" method="dialog" class="modal__content">
+      <div class="modal__title">
+        <h2>Edit a Book</h2>
+        <button type="button" class="btn btn--pill" id="closeEdit">Close</button>
+      </div>
+
+      <input type="hidden" name="uuid"/>
+
+      <label>Title:
+        <input name="title" required/>
+      </label>
+
+      <label>Author:
+        <input name="title" required/>
+      </label>
+
+      <label>Pages:
+        <input name="pages" type="number" min="1" step="1" required/>
+      </label>
+
+      <label class="chk">
+        <input name="read" type="checkbox"/>
+        Read
+      </label>
+
+      <div class="actions">
+        <button class="btn" type="submit">
+          <span class="mdi mdi-content-save"></span>
+          Apply
+        </button>
+      </div>
+
+      <div class="idbox">ID: <span id="editHumanId">-</span></div>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
 </body>
 </html>
