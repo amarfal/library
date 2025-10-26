@@ -34,5 +34,84 @@ body {
 
 /* Main layout */
 .wrap {
-  
+  display: grid;
+  place-content:start center;
+  padding: 3rem 1rem 6rem;
 }
+
+.panel {
+  width: min(880px, 92vw);
+  background: #fff1e8;
+  border: 1px solid #000;
+  box-shadow: 0 6px 30px var(--shadow);
+}
+
+.panel__bar {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  padding: .6rem .8rem;
+  border-bottom: 1px solid #000;
+  background: #f7eae2;
+}
+.panel__spacer { flex:1 }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  background: var(--accent);
+  color: white;
+  border: 1px solid #000;
+  padding: .35rem .6rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+.btn:hover { filter: brightness(1.05) }
+.btn:active { transform: translateY(1px) }
+
+.btn--ghost {
+  background: #decdfa;
+  color: #111;
+}
+
+.btn--pill {
+  background: #c7aef7;
+  color: #111;
+  border-radius: 6px;
+  padding: .25rem .5rem;
+}
+
+.mdi {
+  font-size: 18px;
+  line-height: 1;
+  vertical-align: -2px;
+}
+
+/* Table */
+.table-scroll { overflow: auto; }
+.tbl {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 14px;
+}
+.tbl th, .tbl td {
+  border-top: 3px solid #000;
+  border-right: 3px solid #000;
+  padding: .45rem .6rem;
+  background: #fff7f2;
+  white-space: nowrap;
+}
+.tbl th:first-child, .tbl td:first-child { border-left:3px solid #000 }
+.tbl thead th { background:#ffeee4; position:sticky; top:0; z-index:1 }
+
+.tbl tbody tr:nth-child(odd) td { background:#fef1ea }
+.tbl tbody tr:nth-child(even) td { background:var(--row-alt) }
+
+.col-title { width:36% }
+.col-author { width:28% }
+.col-pages { width:10%; text-align:right }
+.col-read { width:13%; text-transform:lowercase }
+.col-edit, .col-remove { width:6%; text-align:center }
+
