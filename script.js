@@ -1,13 +1,14 @@
 const myLibrary = [];
 
 // Book constructor 
-function Book({ title, author, pages, read, uuid = crypto.randomUUID(), humanId = randHumanId() }) {
+function Book({ title, author, pages, read, inProgress, uuid = crypto.randomUUID(), humanId = randHumanId() }) {
   this.uuid = uuid;
   this.humanId = humanId;
   this.title = title;
   this.author = author;
   this.pages = Number(pages);
   this.read = Boolean(read);
+  this.inProgress = Boolean(inProgress);
 }
 Book.prototype.toggleRead = function () {
   this.read = !this.read;
@@ -59,8 +60,16 @@ function render() {
 
     tr.append(td(book.title));
     tr.append(td(book.author));
-    tr.append(td(String(book.pages), "right"));
-    tr.append(td(book.read ? "yes" : "no"));
+    tr.append(td(String(book.pages)));
+    
+    // Display status: In Progress, Yes, or No
+    let statusText = "No";
+    if (book.inProgress) {
+      statusText = "In Progress";
+    } else if (book.read) {
+      statusText = "Yes";
+    }
+    tr.append(td(statusText));
 
     // Edit
     const editCell = document.createElement("td");
@@ -82,14 +91,6 @@ function render() {
     rmBtn.addEventListener("click", () => removeBook(book.uuid));
     rmCell.append(rmBtn);
     tr.append(rmCell);
-
-    // Read
-    tr.children[3].style.cursor = "pointer";
-    tr.children[3].title = "Click to toggle read status";
-    tr.children[3].addEventListener("click", () => {
-      book.toggleRead();
-      save(); render();
-    });
 
     tbody.append(tr);
   }
@@ -119,6 +120,7 @@ formAdd.addEventListener("submit", (e) => {
     author: data.get("author").trim(),
     pages: Number(data.get("pages")),
     read: data.get("read") === "on",
+    inProgress: data.get("inProgress") === "on",
     humanId: Number(document.getElementById("addHumanId").textContent) || randHumanId(),
   });
 
@@ -138,6 +140,7 @@ function openEdit(uuid) {
   formEdit.elements["author"].value = book.author;
   formEdit.elements["pages"].value = String(book.pages);
   formEdit.elements["read"].checked = book.read;
+  formEdit.elements["inProgress"].checked = book.inProgress;
   editHumanIdSpan.textContent = book.humanId;
 
   dlgEdit.showModal();
@@ -154,6 +157,7 @@ formEdit.addEventListener("submit", (e) => {
   book.author = formEdit.elements["author"].value.trim();
   book.pages  = Number(formEdit.elements["pages"].value);
   book.read   = formEdit.elements["read"].checked;
+  book.inProgress = formEdit.elements["inProgress"].checked;
 
   save(); render();
   dlgEdit.close();
@@ -175,7 +179,7 @@ btnLoadDefaults.addEventListener("click", () => {
     title:"Baptism of Fire", author:"A. Sapkowski", pages:382, read:true
   }));
   myLibrary.push(new Book({
-    title:"the Hobbit", author:"J.R.R. Tolkien", pages:295, read:false
+    title:"The Hobbit", author:"J.R.R. Tolkien", pages:295, read:false
   }));
   save(); render();
 });

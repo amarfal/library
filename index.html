@@ -20,7 +20,6 @@
     <section class="panel">
       <div class="panel__bar">
         <button id="btnAdd" class="btn">
-          <span class="mdi mdi-book-plus-outline"></span>
           Add a Book
         </button>
 
@@ -80,11 +79,15 @@
         <input name="read" type="checkbox"/>
         Read 
       </label>
+      
+      <label class="chk">
+        <input name="inProgress" type="checkbox"/>
+        In Progress
+      </label>
 
       <div class="actions">
         <button class="btn" type="submit">
-          <span class="md mdi-check-bold"></span>
-        Add 
+          Add 
         </button>
       </div>
 
@@ -107,7 +110,7 @@
       </label>
 
       <label>Author:
-        <input name="title" required/>
+        <input name="author" required/>
       </label>
 
       <label>Pages:
@@ -118,10 +121,14 @@
         <input name="read" type="checkbox"/>
         Read
       </label>
+      
+      <label class="chk">
+        <input name="inProgress" type="checkbox"/>
+        In Progress
+      </label>
 
       <div class="actions">
         <button class="btn" type="submit">
-          <span class="mdi mdi-content-save"></span>
           Apply
         </button>
       </div>
