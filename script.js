@@ -129,3 +129,63 @@ formAdd.addEventListener("submit", (e) => {
 });
 
 // Edit pt2
+function openEdit(uuid) {
+  const book = myLibrary.find(b => b.uuid === uuid);
+  if (!book) return;
+
+  formEdit.elements["uuid"].value = book.uuid;
+  formEdit.elements["title"].value = book.title;
+  formEdit.elements["author"].value = book.author;
+  formEdit.elements["pages"].value = String(book.pages);
+  formEdit.elements["read"].checked = book.read;
+  editHumanIdSpan.textContent = book.humanId;
+
+  dlgEdit.showModal();
+}
+closeEdit.addEventListener("click", () => dlgEdit.close());
+
+formEdit.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const uuid = formEdit.elements["uuid"].value;
+  const book = myLibrary.find(b => b.uuid === uuid);
+  if (!book) return;
+
+  book.title  = formEdit.elements["title"].value.trim();
+  book.author = formEdit.elements["author"].value.trim();
+  book.pages  = Number(formEdit.elements["pages"].value);
+  book.read   = formEdit.elements["read"].checked;
+
+  save(); render();
+  dlgEdit.close();
+});
+
+// Remove
+function removeBook(uuid) {
+  const idx = myLibrary.findIndex(b => b.uuid === uuid);
+  if (idx >= 0) {
+    myLibrary.splice(idx, 1);
+    save(); render();
+  }
+}
+
+// Defaults & Storage 
+btnLoadDefaults.addEventListener("click", () => {
+  myLibrary.length = 0;
+  myLibrary.push(new Book({
+    title:"Baptism of Fire", author:"A. Sapkowski", pages:382, read:true
+  }));
+  myLibrary.push(new Book({
+    title:"the Hobbit", author:"J.R.R. Tolkien", pages:295, read:false
+  }));
+  save(); render();
+});
+
+btnClearStorage.addEventListener("click", () => {
+  localStorage.removeItem(STORAGE_KEY);
+  myLibrary.length = 0;
+  render();
+});
+
+// Boot
+load();
+render();
