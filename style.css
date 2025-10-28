@@ -6,7 +6,7 @@
   --row-alt: #c4b1d9;
   --accent: #7f5cc9;
   --ghost: #eee;
-  --stroke: #222;
+  --stroke: #fa1010;
   --shadow: rgba(0,0,0,.25);
 }
 
@@ -29,7 +29,7 @@ body {
   font-weight: 700;
   letter-spacing: .02em;
   background: #ffe9dd;
-  border-bottom: 3px solid #000;
+  border-bottom: 5px solid #000;
 }
 
 /* Main layout */
