@@ -89,16 +89,12 @@ body {
 }
 
 /* Table */
-.table-scroll { 
-  overflow-x: hidden;
-  overflow-y: auto;
-}
+.table-scroll { overflow-x: hidden; }
 .tbl {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   font-size: 14px;
-  table-layout: fixed;
 }
 .tbl th, .tbl td {
   border-top: none;
